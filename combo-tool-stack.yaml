@@ -1,0 +1,217 @@
+version: 2
+name: ai-agent-automation-combo
+summary: Modular stack combining orchestration, research, browser automation, memory, and upgrade-ready skills.
+shortlist:
+  - name: Dify
+    repo: https://github.com/langgenius/dify
+    role: all-around agent automation platform
+    use_when: workflows, agents, and RAG are needed in one system
+  - name: nanobot
+    repo: https://github.com/HKUDS/nanobot
+    role: lightweight self-hosted agent framework
+    use_when: fast local setup and Python extensibility are needed
+  - name: gpt-researcher
+    repo: https://github.com/assafelovic/gpt-researcher
+    role: research-focused autonomous agent
+    use_when: deep web research and structured reports are needed
+  - name: agent-browser
+    repo: https://github.com/vercel-labs/agent-browser
+    role: browser automation layer
+    use_when: reliable website interaction is required
+  - name: khoj
+    repo: https://github.com/khoj-ai/khoj
+    role: memory and scheduled automation layer
+    use_when: persistent context and recurring tasks are needed
+  - name: TencentDB-Agent-Memory
+    repo: https://github.com/TencentCloud/TencentDB-Agent-Memory
+    role: team memory hub with chat memory, skills, wiki, and code graph
+    use_when: multi-agent shared memory governance and reusable memory assets are needed
+combo_group:
+  core_orchestrator:
+    tool: Dify
+  research_engine:
+    tool: gpt-researcher
+  browser_action_layer:
+    tool: agent-browser
+  knowledge_memory_layer:
+    tool: khoj (default)
+    alternatives:
+      - TencentDB-Agent-Memory
+  execution_runtime_optional:
+    tool: nanobot
+upgrades:
+  - id: request-router
+    objective: auto-route each request to research, browser action, or memory lookup
+    owner_tool: Dify
+    risk_level: medium
+  - id: human-approval-gate
+    objective: require explicit approval for high-risk actions (posting, purchasing, deleting)
+    owner_tool: Dify
+    risk_level: high
+  - id: evaluation-qa
+    objective: score outputs for accuracy, completeness, and citation quality
+    owner_tool: gpt-researcher
+    risk_level: medium
+  - id: monitoring-observability
+    objective: track latency, failures, and cost per workflow
+    owner_tool: Dify
+    risk_level: low
+  - id: retry-fallback
+    objective: model/tool/cache fallback for resilient execution
+    owner_tool: Dify
+    risk_level: medium
+new_skills:
+  - name: arabic-first-nlp
+    description: Arabic intent and entity extraction with dialect normalization
+  - name: ocr-document-ingestion
+    description: PDF and image ingestion into structured text
+  - name: knowledge-sync
+    description: Sync outputs to khoj with tags and version metadata
+  - name: scheduling-trigger
+    description: Time-based and event-based automation triggers
+  - name: security-compliance
+    description: PII redaction, policy checks, and audit logging
+skill_matrix:
+  - skill: request-router
+    owner_tool: Dify
+    input_schema:
+      request_text: string
+      user_context: object
+      allowed_actions: array[string]
+    output_schema:
+      selected_path: enum[research,browser_action,memory_lookup]
+      routing_reason: string
+      confidence: number
+    fallback: default_to_research_then_memory_lookup
+    risk_level: medium
+  - skill: human-approval-gate
+    owner_tool: Dify
+    input_schema:
+      proposed_action: string
+      risk_category: enum[low,medium,high]
+      approval_policy: object
+    output_schema:
+      decision: enum[approved,rejected,needs_review]
+      approver: string
+      timestamp: string
+    fallback: block_action_and_notify
+    risk_level: high
+  - skill: evaluation-qa
+    owner_tool: gpt-researcher
+    input_schema:
+      output_text: string
+      citations: array[string]
+      scoring_weights: object
+    output_schema:
+      accuracy_score: number
+      completeness_score: number
+      citation_quality_score: number
+      pass_fail: boolean
+    fallback: route_to_manual_review
+    risk_level: medium
+  - skill: monitoring-observability
+    owner_tool: Dify
+    input_schema:
+      workflow_id: string
+      run_id: string
+      metrics: object
+    output_schema:
+      latency_ms: number
+      error_rate: number
+      estimated_cost: number
+      alert_state: enum[ok,warning,critical]
+    fallback: emit_minimal_logs
+    risk_level: low
+  - skill: retry-fallback
+    owner_tool: Dify
+    input_schema:
+      failed_step: string
+      error_type: string
+      retry_policy: object
+    output_schema:
+      retry_attempted: boolean
+      fallback_used: enum[model,tool,cache,none]
+      final_state: enum[success,failed]
+    fallback: escalate_to_operator
+    risk_level: medium
+  - skill: arabic-first-nlp
+    owner_tool: nanobot
+    input_schema:
+      arabic_text: string
+      dialect_hint: string
+    output_schema:
+      normalized_text: string
+      intents: array[string]
+      entities: object
+    fallback: general_nlp_pipeline
+    risk_level: medium
+  - skill: ocr-document-ingestion
+    owner_tool: nanobot
+    input_schema:
+      file_url_or_path: string
+      language: string
+    output_schema:
+      extracted_text: string
+      structured_sections: array[object]
+      confidence: number
+    fallback: queue_for_manual_extraction
+    risk_level: medium
+  - skill: knowledge-sync
+    owner_tool: khoj
+    input_schema:
+      content: string
+      tags: array[string]
+      source_ref: string
+    output_schema:
+      record_id: string
+      version: string
+      indexed: boolean
+    fallback: local_queue_and_retry
+    risk_level: low
+  - skill: scheduling-trigger
+    owner_tool: Dify
+    input_schema:
+      trigger_type: enum[time,event]
+      trigger_config: object
+      workflow_target: string
+    output_schema:
+      schedule_id: string
+      next_run: string
+      active: boolean
+    fallback: manual_trigger_mode
+    risk_level: low
+  - skill: security-compliance
+    owner_tool: nanobot
+    input_schema:
+      content: string
+      policy_profile: string
+    output_schema:
+      pii_found: boolean
+      violations: array[string]
+      redacted_content: string
+      audit_id: string
+    fallback: block_output_and_notify
+    risk_level: high
+pipelines:
+  - name: research-to-action
+    steps:
+      - route request with request-router
+      - gather findings via gpt-researcher
+      - evaluate output quality with evaluation-qa
+      - store long-term context through knowledge-sync
+      - execute approved website actions through agent-browser
+  - name: recurring-intelligence-loop
+    steps:
+      - schedule trigger using scheduling-trigger
+      - run research collection in gpt-researcher
+      - apply arabic-first-nlp normalization when content is Arabic
+      - ingest documents using ocr-document-ingestion when attachments exist
+      - enforce security-compliance before publishing
+      - update knowledge state in khoj
+mvp_order:
+  - Deploy Dify as the single entry point
+  - Integrate gpt-researcher as a callable tool
+  - Add khoj for shared memory and scheduled jobs (or TencentDB-Agent-Memory for team memory governance)
+  - Connect agent-browser for deterministic web actions
+  - Add nanobot for Arabic NLP, OCR, and compliance skills
+  - Enable router, approval gate, monitoring, and fallback policies
