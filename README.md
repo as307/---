@@ -37,6 +37,11 @@ This YAML file provides:
 - ready pipeline patterns,
 - MVP-to-production build order.
 
+
+## Ready-to-Copy Integration Checklist
+
+- `./INTEGRATION_CHECKLIST.md` (English + Arabic)
+
 ## How to Use
 
 1. Use Dify as the entrypoint for all workflows.
