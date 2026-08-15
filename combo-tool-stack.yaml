@@ -34,7 +34,7 @@ combo_group:
   execution_runtime_optional:
     tool: nanobot
 upgrades:
-  - id: router-skill
+  - id: request-router
     objective: auto-route each request to research, browser action, or memory lookup
     owner_tool: Dify
     risk_level: medium
@@ -42,15 +42,15 @@ upgrades:
     objective: require explicit approval for high-risk actions (posting, purchasing, deleting)
     owner_tool: Dify
     risk_level: high
-  - id: evaluation-qa-skill
+  - id: evaluation-qa
     objective: score outputs for accuracy, completeness, and citation quality
     owner_tool: gpt-researcher
     risk_level: medium
-  - id: monitoring-skill
+  - id: monitoring-observability
     objective: track latency, failures, and cost per workflow
     owner_tool: Dify
     risk_level: low
-  - id: retry-fallback-skill
+  - id: retry-fallback
     objective: model/tool/cache fallback for resilient execution
     owner_tool: Dify
     risk_level: medium
