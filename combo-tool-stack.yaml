@@ -1,0 +1,54 @@
+version: 1
+name: ai-agent-automation-combo
+summary: Modular stack combining orchestration, research, browser automation, and memory.
+shortlist:
+  - name: Dify
+    repo: https://github.com/langgenius/dify
+    role: all-around agent automation platform
+    use_when: workflows, agents, and RAG are needed in one system
+  - name: nanobot
+    repo: https://github.com/HKUDS/nanobot
+    role: lightweight self-hosted agent framework
+    use_when: fast local setup and Python extensibility are needed
+  - name: gpt-researcher
+    repo: https://github.com/assafelovic/gpt-researcher
+    role: research-focused autonomous agent
+    use_when: deep web research and structured reports are needed
+  - name: agent-browser
+    repo: https://github.com/vercel-labs/agent-browser
+    role: browser automation layer
+    use_when: reliable website interaction is required
+  - name: khoj
+    repo: https://github.com/khoj-ai/khoj
+    role: memory and scheduled automation layer
+    use_when: persistent context and recurring tasks are needed
+combo_group:
+  core_orchestrator:
+    tool: Dify
+  research_engine:
+    tool: gpt-researcher
+  browser_action_layer:
+    tool: agent-browser
+  knowledge_memory_layer:
+    tool: khoj
+  execution_runtime_optional:
+    tool: nanobot
+pipelines:
+  - name: research-to-action
+    steps:
+      - orchestrate with Dify
+      - gather findings via gpt-researcher
+      - save long-term context in khoj
+      - execute website actions through agent-browser
+  - name: recurring-intelligence-loop
+    steps:
+      - schedule trigger in Dify
+      - run research collection in gpt-researcher
+      - update knowledge state in khoj
+      - optionally dispatch custom Python tasks via nanobot
+mvp_order:
+  - Deploy Dify as the single entry point
+  - Integrate gpt-researcher as a callable tool
+  - Add khoj for shared memory and scheduled jobs
+  - Connect agent-browser for deterministic web actions
+  - Add nanobot only for custom runtime tasks
