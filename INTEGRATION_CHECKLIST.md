@@ -20,17 +20,32 @@
 - [ ] Define clear boundaries between Dify-managed and nanobot-managed tasks
 - [ ] Add permission controls for runtime-executed actions
 
-### Phase 4 — Production Readiness
-- [ ] Add scheduling for recurring workflows
+### Phase 4 — Skill Upgrades
+- [ ] Add **request-router** skill for automatic path selection
+- [ ] Add **human-approval-gate** before posting/purchasing/deleting actions
+- [ ] Add **evaluation-qa** scoring for output quality
+- [ ] Add **monitoring-observability** for latency/failure/cost
+- [ ] Add **retry-fallback** policy for model/tool/cache fallback
+
+### Phase 5 — New Skills Expansion
+- [ ] Add **arabic-first-nlp** (intent/entity extraction + dialect normalization)
+- [ ] Add **ocr-document-ingestion** (PDF/image to structured text)
+- [ ] Add **knowledge-sync** (tag/version sync into khoj)
+- [ ] Add **scheduling-trigger** (time/event automation)
+- [ ] Add **security-compliance** (PII redaction + policy checks + audit logs)
+
+### Phase 6 — Production Readiness
 - [ ] Add alerting for failed runs
 - [ ] Add backup/restore for memory and workflow configs
 - [ ] Document operational runbooks (incident + rollback)
 
 ### Quick Validation (Copy/Paste)
-- [ ] Research request can run from Dify and return structured output
-- [ ] Output is stored and searchable in khoj
-- [ ] Browser action can execute and report completion
-- [ ] Workflow failure path is handled without data loss
+- [ ] Router selects the expected execution path for sample requests
+- [ ] High-risk actions are blocked until human approval is provided
+- [ ] QA scores are generated with citations and pass/fail status
+- [ ] Arabic text is normalized with intents/entities extracted
+- [ ] OCR documents are converted and indexed in khoj
+- [ ] Compliance checks redact PII and generate audit IDs
 
 ---
 
@@ -54,14 +69,29 @@
 - [ ] تحديد حدود واضحة بين مهام Dify ومهام nanobot
 - [ ] إضافة ضوابط صلاحيات للعمليات المنفذة وقت التشغيل
 
-### المرحلة 4 — جاهزية الإنتاج
-- [ ] إضافة جدولة لسير العمل المتكرر
+### المرحلة 4 — ترقية المهارات
+- [ ] إضافة مهارة **request-router** لاختيار المسار تلقائياً
+- [ ] إضافة **human-approval-gate** قبل النشر/الشراء/الحذف
+- [ ] إضافة **evaluation-qa** لتقييم جودة المخرجات
+- [ ] إضافة **monitoring-observability** لمتابعة الزمن/الفشل/الكلفة
+- [ ] إضافة **retry-fallback** كسياسة بديلة عند الفشل
+
+### المرحلة 5 — توسيع المهارات الجديدة
+- [ ] إضافة **arabic-first-nlp** (استخراج النوايا والكيانات + توحيد اللهجات)
+- [ ] إضافة **ocr-document-ingestion** (تحويل PDF/الصور إلى نص منظم)
+- [ ] إضافة **knowledge-sync** (مزامنة بالوسوم والإصدارات داخل khoj)
+- [ ] إضافة **scheduling-trigger** (تشغيل زمني/حدثي)
+- [ ] إضافة **security-compliance** (إخفاء PII + فحص السياسات + سجل تدقيق)
+
+### المرحلة 6 — جاهزية الإنتاج
 - [ ] إضافة تنبيهات عند فشل التشغيل
 - [ ] إضافة نسخ احتياطي/استعادة للذاكرة وإعدادات سير العمل
 - [ ] توثيق أدلة التشغيل (الحوادث + التراجع)
 
 ### تحقق سريع (نسخ/لصق)
-- [ ] يمكن تشغيل طلب بحث من Dify وإرجاع مخرجات منظمة
-- [ ] يتم حفظ المخرجات وإمكانية البحث عنها في khoj
-- [ ] يمكن تنفيذ إجراء المتصفح مع تقرير اكتمال واضح
-- [ ] يتم التعامل مع مسار الفشل دون فقدان البيانات
+- [ ] يختار الموجّه المسار الصحيح لطلبات تجريبية
+- [ ] يتم إيقاف الإجراءات عالية المخاطر حتى اعتماد بشري
+- [ ] يتم إنشاء درجات جودة مع المراجع وحالة نجاح/فشل
+- [ ] يتم توحيد النص العربي مع استخراج النوايا والكيانات
+- [ ] يتم تحويل المستندات عبر OCR وفهرستها داخل khoj
+- [ ] يتم إخفاء البيانات الحساسة وإنتاج معرف تدقيق

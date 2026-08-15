@@ -34,9 +34,21 @@ This repository contains a practical shortlist and a composable stack definition
 This YAML file provides:
 - the top-5 shortlist,
 - grouped tool roles,
+- upgrade roadmap (router, approval, QA, monitoring, fallback),
+- a plug-and-play skill matrix (name, owner tool, I/O schema, fallback, risk level),
 - ready pipeline patterns,
 - MVP-to-production build order.
 
+
+
+## Upgrade Skills Included
+
+- Router skill for automatic request path selection
+- Human approval gate for high-risk actions
+- Evaluation/QA scoring skill
+- Monitoring skill for latency/failure/cost
+- Retry + fallback skill for resilience
+- Arabic-first NLP, OCR ingestion, knowledge sync, scheduling, and security/compliance skills
 
 ## Ready-to-Copy Integration Checklist
 
