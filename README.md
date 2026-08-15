@@ -29,7 +29,7 @@ This repository contains a practical shortlist and a composable stack definition
 
 ## Included Implementation Artifact
 
-- `/home/runner/work/---/---/combo-tool-stack.yaml`
+- `./combo-tool-stack.yaml`
 
 This YAML file provides:
 - the top-5 shortlist,
