@@ -26,6 +26,11 @@ This repository contains a practical shortlist and a composable stack definition
 5. **khoj** — https://github.com/khoj-ai/khoj
    Memory and scheduled automation layer (“second brain”).
 
+## Optional Advanced Memory Backend
+
+- **TencentDB Agent Memory** — https://github.com/TencentCloud/TencentDB-Agent-Memory  
+  Use this when you need team memory governance, asset sharing, skill extraction, wiki, and code graph capabilities.
+
 ## Recommended Combo Group
 
 - **Core Orchestrator:** Dify
@@ -80,6 +85,21 @@ This YAML file provides:
 6. Use `combo-tool-stack.yaml` as the implementation contract for skill ownership, I/O schemas, and pipeline definitions.
 7. Execute `INTEGRATION_CHECKLIST.md` phase-by-phase (MVP first, then reliability, then production).
 8. Run the Quick Validation checklist before marking any phase complete.
+
+## One-Command Runner (TencentDB Agent Memory)
+
+If you want a single command from this repository to start the TencentDB Agent Memory stack:
+
+```bash
+./run_tencent_memory.sh
+```
+
+Optional flags:
+- `--clone-if-missing` to clone the external TencentDB Agent Memory repository if it is not already present.
+- `--approve-external-run` to explicitly allow running the external `start-all.sh` after review.
+- `--base-dir <path>` to choose where the external repository should exist.
+
+This runner launches TencentDB Agent Memory from its official `deploy/global-images/start-all.sh`.
 
 ## When You Should Use Another Repository
 

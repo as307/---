@@ -22,6 +22,10 @@ shortlist:
     repo: https://github.com/khoj-ai/khoj
     role: memory and scheduled automation layer
     use_when: persistent context and recurring tasks are needed
+  - name: TencentDB-Agent-Memory
+    repo: https://github.com/TencentCloud/TencentDB-Agent-Memory
+    role: team memory hub with chat memory, skills, wiki, and code graph
+    use_when: multi-agent shared memory governance and reusable memory assets are needed
 combo_group:
   core_orchestrator:
     tool: Dify
@@ -30,7 +34,9 @@ combo_group:
   browser_action_layer:
     tool: agent-browser
   knowledge_memory_layer:
-    tool: khoj
+    tool: khoj (default)
+    alternatives:
+      - TencentDB-Agent-Memory
   execution_runtime_optional:
     tool: nanobot
 upgrades:
@@ -205,7 +211,7 @@ pipelines:
 mvp_order:
   - Deploy Dify as the single entry point
   - Integrate gpt-researcher as a callable tool
-  - Add khoj for shared memory and scheduled jobs
+  - Add khoj for shared memory and scheduled jobs (or TencentDB-Agent-Memory for team memory governance)
   - Connect agent-browser for deterministic web actions
   - Add nanobot for Arabic NLP, OCR, and compliance skills
   - Enable router, approval gate, monitoring, and fallback policies

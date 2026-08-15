@@ -12,8 +12,10 @@
 - [ ] Deploy **Dify** as the main workflow orchestrator
 - [ ] Create one end-to-end workflow entrypoint in Dify
 - [ ] Connect **gpt-researcher** as a research tool/service
-- [ ] Connect **khoj** for persistent memory storage
+- [ ] Select memory backend: **khoj** (default) or **TencentDB Agent Memory** (advanced team memory)
+- [ ] Connect selected memory backend for persistent/shared memory storage
 - [ ] Define one shared data schema for workflow outputs
+- [ ] (Optional) Use one-command runner `run_tencent_memory.sh` when TencentDB Agent Memory is selected
 
 ### Phase 2 — Action Layer
 - [ ] Integrate **agent-browser** for deterministic website actions
@@ -67,8 +69,10 @@
 - [ ] نشر **Dify** كمنسّق رئيسي لسير العمل
 - [ ] إنشاء نقطة دخول واحدة من البداية للنهاية داخل Dify
 - [ ] ربط **gpt-researcher** كأداة/خدمة للبحث
-- [ ] ربط **khoj** لحفظ الذاكرة بشكل دائم
+- [ ] اختيار طبقة الذاكرة: **khoj** (الافتراضي) أو **TencentDB Agent Memory** (ذاكرة فرق متقدمة)
+- [ ] ربط طبقة الذاكرة المختارة لحفظ/مشاركة الذاكرة بشكل دائم
 - [ ] تعريف مخطط بيانات موحّد لمخرجات سير العمل
+- [ ] (اختياري) استخدام أمر التشغيل الواحد `run_tencent_memory.sh` عند اختيار TencentDB Agent Memory
 
 ### المرحلة 2 — طبقة التنفيذ
 - [ ] دمج **agent-browser** لتنفيذ مهام الويب بشكل موثوق
