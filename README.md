@@ -2,6 +2,13 @@
 
 This repository contains a practical shortlist and a composable stack definition for building an AI-agent automation system.
 
+## What This Repository Is (and Is Not)
+
+- This repository is a **blueprint + governance** reference.
+- It defines architecture, integration order, and validation criteria.
+- It does **not** include a fully integrated runnable environment for all tools yet.
+- You only need another repository when you begin implementing/deploying a specific tool stack.
+
 ## Top 5 Repositories by Use Case
 
 1. **Dify** — https://github.com/langgenius/dify
@@ -54,10 +61,37 @@ This YAML file provides:
 
 - [`INTEGRATION_CHECKLIST.md`](./INTEGRATION_CHECKLIST.md) (English + Arabic)
 
-## How to Use
+## Recommended Implementation Order
+
+1. Deploy **Dify** as the single workflow entrypoint.
+2. Integrate **gpt-researcher** as the research engine.
+3. Integrate **khoj** for persistent shared memory.
+4. Integrate **agent-browser** for deterministic web actions.
+5. Integrate **nanobot** only where custom Python runtime skills are needed (Arabic NLP, OCR, compliance).
+6. Add router/approval/monitoring/fallback upgrades after MVP stability.
+
+## How to Use This Repo
 
 1. Use Dify as the entrypoint for all workflows.
 2. Register gpt-researcher as a research tool in your orchestration flow.
 3. Store reusable outputs and context in khoj.
 4. Route website tasks to agent-browser.
 5. Add nanobot only for custom Python runtime tasks where needed.
+6. Use `combo-tool-stack.yaml` as the implementation contract for skill ownership, I/O schemas, and pipeline definitions.
+7. Execute `INTEGRATION_CHECKLIST.md` phase-by-phase (MVP first, then reliability, then production).
+8. Run the Quick Validation checklist before marking any phase complete.
+
+## When You Should Use Another Repository
+
+Use this repository alone when you are planning and governing architecture.
+
+Create/use another repository only when you need to:
+- deploy Dify or infrastructure artifacts,
+- run integration code, adapters, or automation services,
+- manage environment-specific runtime configuration.
+
+## Team Operating Guidance
+
+- Keep this repository as the single source of truth for architecture decisions.
+- Update checklist status as implementation progresses.
+- Update `combo-tool-stack.yaml` whenever skill ownership, schemas, or pipeline steps change.

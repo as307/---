@@ -2,6 +2,12 @@
 
 ## English
 
+### How to Use This Checklist
+- Use this repository as a blueprint tracker, not as a full runtime deployment.
+- Complete phases in order: **Phase 1 (MVP)** first, then Phase 2+, then production readiness.
+- Mark each item only after implementation is complete and validated.
+- Before closing a phase, run all items in **Quick Validation (Copy/Paste)**.
+
 ### Phase 1 — Foundation (MVP)
 - [ ] Deploy **Dify** as the main workflow orchestrator
 - [ ] Create one end-to-end workflow entrypoint in Dify
@@ -50,6 +56,12 @@
 ---
 
 ## العربية
+
+### كيفية استخدام قائمة التحقق
+- استخدم هذا المستودع كمرجع تخطيطي للتتبع وليس كبيئة تشغيل متكاملة.
+- نفّذ المراحل بالترتيب: **المرحلة 1 (MVP)** أولاً ثم المراحل التالية ثم جاهزية الإنتاج.
+- علِّم كل بند بعد اكتمال التنفيذ والتحقق منه.
+- قبل إغلاق أي مرحلة، نفّذ عناصر **التحقق السريع** كاملة.
 
 ### المرحلة 1 — الأساس (MVP)
 - [ ] نشر **Dify** كمنسّق رئيسي لسير العمل
