@@ -29,7 +29,7 @@ This repository contains a practical shortlist and a composable stack definition
 
 ## Included Implementation Artifact
 
-- `./combo-tool-stack.yaml`
+- [`combo-tool-stack.yaml`](./combo-tool-stack.yaml)
 
 This YAML file provides:
 - the top-5 shortlist,
@@ -40,7 +40,7 @@ This YAML file provides:
 
 ## Ready-to-Copy Integration Checklist
 
-- `./INTEGRATION_CHECKLIST.md` (English + Arabic)
+- [`INTEGRATION_CHECKLIST.md`](./INTEGRATION_CHECKLIST.md) (English + Arabic)
 
 ## How to Use
 
